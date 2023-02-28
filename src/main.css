@@ -1,3 +1,28 @@
 body {
-    background-color: darkgreen;
+    background-color: #7d6b3b;
+}
+
+.project-container {
+    border: 1px solid black;
+    width: 200px;
+    height: 500px;
+}
+
+.test-project {
+    width: 600px;
+    height: 300px;
+    background-color: aliceblue;
+    position: absolute;
+    top: 20vh;
+    left: 20vw;
+    display: none;
+}
+
+.faded {
+    opacity: 20%;
+    pointer-events: none;
+}
+
+.error {
+    display: none;
 }

@@ -9,10 +9,21 @@
 </head>
 
 <body>
-    <div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi dolore quibusdam tempore eveniet quas
-            accusamus incidunt atque iusto inventore ut facere, doloremque, facilis aliquid assumenda dolorem obcaecati!
-            Eum, quibusdam dicta.</p>
+    <div class="container">
+        <div class="project-container">
+            <button>Add Project</button>
+        </div>
+    </div>
+    <div class="test-project">
+        <h2>Add project</h2>
+        <form action="#" method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name">
+            <label for="color">Color</label>
+            <input type="color" name="color" id="color">
+            <button type="submit" id="create-project">Create</button>
+            <p class="error">Enter a name before adding a new project</p>
+        </form>
     </div>
 </body>
 
