@@ -1,15 +1,13 @@
-import { domCache } from './domCache.js';
+import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
 
-const domElements = domCache();
+domElements.createProject.addEventListener('click', getValues);
 
 function getValues(e) {
   e.preventDefault();
-  const name = document.querySelector('#name');
-  const color = document.querySelector('#color');
-  addProject(name.value, color.value);
-  name.value = '';
-  color.value = '';
+  addProject(domElements.name.value, domElements.color.value);
+  domElements.name.value = '';
+  domElements.color.value = '';
 }
 
 function addProject(name, color) {
@@ -17,8 +15,8 @@ function addProject(name, color) {
     domElements.errorMessage.style.display = 'block';
     return;
   }
-  const div = document.createElement('div');
-  const a = document.createElement('a');
+  const div = CreateDom.makeDiv();
+  const a = CreateDom.makeA();
   a.textContent = name;
   a.style.color = color;
   a.classList.add('project');
@@ -34,8 +32,7 @@ function defaultDisplay() {
   domElements.mainContainer.classList.remove('faded');
 }
 
-export function setNewProject() {
+export function displayProjectPanel() {
   domElements.hiddenProject.style.display = 'block';
   domElements.mainContainer.classList.add('faded');
-  domElements.createProject.addEventListener('click', getValues);
 }

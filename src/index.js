@@ -1,6 +1,5 @@
 import './main.css';
-import { setNewProject } from './popoutProject';
-import { domCache } from './domCache.js';
+import { displayProjectPanel } from './popoutProject';
+import { domElements } from './domCache.js';
 
-const { newProject } = domCache();
-newProject.addEventListener('click', setNewProject);
+domElements.newProject.addEventListener('click', displayProjectPanel);
