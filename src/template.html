@@ -5,23 +5,52 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Todo list</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400&family=Tilt+Neon&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
 <body>
-    <div class="container">
-        <div class="project-container">
-            <button>Add Project</button>
-        </div>
-        <div class="list-container" data-index="0"></div>
-    </div>
+    <header>
+        <h1>What are you gonna do today?</h1>
+    </header>
+    <main>
+        <section class="container">
+            <div class="project-container">
+                <div class="header-project">
+                    <h3>Your Projects</h3>
+                    <span class="material-symbols-outlined plus">
+                        add_box
+                    </span>
+                </div>
+                <div class="new-project">
+                    <div class="project general">
+                        <a class="title">General</a>
+                        <span class="material-symbols-outlined options">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="list-container" data-index="0"></div>
+        </section>
+    </main>
     <div class="test-project">
         <h2>Add project</h2>
         <form action="#" method="post">
-            <label for="name">Name</label>
-            <input type="text" name="name" id="name">
-            <label for="color">Color</label>
-            <input type="color" name="color" id="color">
+            <div>
+                <label for="name">Name *</label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div>
+                <label for="color">Color</label>
+                <input type="color" name="color" id="color">
+            </div>
             <button type="submit" id="create-project">Create</button>
             <p class="error">Enter a name before adding a new project</p>
         </form>

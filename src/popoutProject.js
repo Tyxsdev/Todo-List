@@ -2,12 +2,13 @@ import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
 
 const links = [];
+links.push(domElements.general);
 
 domElements.createProject.addEventListener('click', getValues);
 
 function handdleLinks(div) {
   links.push(div);
-  for (let i = 0; i < links.length; i++) {
+  for (let i = 0; i < links.length; i += 1) {
     links[i].dataset.index = `${i}`;
   }
 }
@@ -26,11 +27,14 @@ function addProject(name, color) {
   }
   const div = CreateDom.makeDiv();
   const a = CreateDom.makeA();
+  const svg = CreateDom.makeSVG();
   a.textContent = name;
   a.style.color = color;
-  a.classList.add('project');
+  a.classList.add('title');
+  div.classList.add('project');
   div.appendChild(a);
-  domElements.projectsContainer.appendChild(div);
+  div.appendChild(svg);
+  domElements.newProjectContainer.appendChild(div);
   handdleLinks(div);
   generateNewTab(links);
   defaultDisplay();

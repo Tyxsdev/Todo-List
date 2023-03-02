@@ -3,7 +3,7 @@ import { CreateDom, domElements } from './domCache';
 let allTabs;
 
 export function generateNewTab(links) {
-  for (let i = 1; i < links.length; i++) {
+  for (let i = 0; i < links.length; i += 1) {
     if (links[i] && links.length === i + 1) {
       const div = CreateDom.makeDiv();
       div.classList.add('list-container');
@@ -22,7 +22,8 @@ function displayLastTab() {
 }
 
 function setEvent(links) {
-  for (let i = 0; i < links.length; i++) {
+  console.log(links);
+  for (let i = 0; i < links.length; i += 1) {
     links[i].addEventListener('click', selectListToDisplay);
   }
 }
