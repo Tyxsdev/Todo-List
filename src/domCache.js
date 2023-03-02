@@ -5,6 +5,11 @@ function domCache() {
   const newProject = document.querySelector('button');
   const createProject = document.querySelector('#create-project');
   const errorMessage = document.querySelector('.error');
+  function refreshList() {
+    const listNode = document.querySelectorAll('.list-container');
+    const listContainer = [...listNode];
+    return listContainer;
+  }
   const name = document.querySelector('#name');
   const color = document.querySelector('#color');
   return {
@@ -14,6 +19,7 @@ function domCache() {
     createProject,
     projectsContainer,
     errorMessage,
+    refreshList,
     name,
     color,
   };

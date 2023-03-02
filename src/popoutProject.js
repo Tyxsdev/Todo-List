@@ -1,7 +1,16 @@
 import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
 
+const links = [];
+
 domElements.createProject.addEventListener('click', getValues);
+
+function handdleLinks(div) {
+  links.push(div);
+  for (let i = 0; i < links.length; i++) {
+    links[i].dataset.index = `${i}`;
+  }
+}
 
 function getValues(e) {
   e.preventDefault();
@@ -22,7 +31,8 @@ function addProject(name, color) {
   a.classList.add('project');
   div.appendChild(a);
   domElements.projectsContainer.appendChild(div);
-  generateNewTab(a);
+  handdleLinks(div);
+  generateNewTab(links);
   defaultDisplay();
 }
 
