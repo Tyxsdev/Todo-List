@@ -31,7 +31,7 @@
                 <div class="new-project">
                     <div class="project general">
                         <a class="title">General</a>
-                        <span class="material-symbols-outlined options">
+                        <span class="material-symbols-outlined options pro-options-button">
                             more_vert
                         </span>
                     </div>
@@ -40,20 +40,23 @@
             <div class="list-container" data-index="0"></div>
         </section>
     </main>
-    <div class="test-project">
-        <h2>Add project</h2>
-        <form action="#" method="post">
-            <div>
-                <label for="name">Name *</label>
-                <input type="text" name="name" id="name">
-            </div>
-            <div>
-                <label for="color">Color</label>
-                <input type="color" name="color" id="color">
-            </div>
-            <button type="submit" id="create-project">Create</button>
-            <p class="error">Enter a name before adding a new project</p>
-        </form>
+    <div class="hidden-container">
+        <div class="test-project">
+            <h2>Add project</h2>
+            <span class="material-symbols-outlined plus close-one">close</span>
+            <form action="#" method="post">
+                <div>
+                    <label for="name">Name *</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div>
+                    <label for="color">Color</label>
+                    <input type="color" name="color" id="color">
+                </div>
+                <button type="submit" id="create-project">Create</button>
+                <p class="error">Enter a name before adding a new project</p>
+            </form>
+        </div>
     </div>
 </body>
 

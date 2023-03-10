@@ -1,10 +1,12 @@
 import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
+import { addCloseEvent, toggleFaded } from './generalEvents.js';
 
 const links = [];
 links.push(domElements.general);
 
 domElements.createProject.addEventListener('click', getValues);
+addCloseEvent(domElements.closeNewProject);
 
 function handdleLinks(div) {
   links.push(div);
@@ -27,7 +29,7 @@ function addProject(name, color) {
   }
   const div = CreateDom.makeDiv();
   const a = CreateDom.makeA();
-  const svg = CreateDom.makeSVG();
+  const svg = CreateDom.makeOptionsSVG();
   a.textContent = name;
   a.style.color = color;
   a.classList.add('title');
@@ -43,10 +45,10 @@ function addProject(name, color) {
 function defaultDisplay() {
   domElements.errorMessage.style.display = 'none';
   domElements.hiddenProject.style.display = 'none';
-  domElements.mainContainer.classList.remove('faded');
+  toggleFaded();
 }
 
 export function displayProjectPanel() {
   domElements.hiddenProject.style.display = 'block';
-  domElements.mainContainer.classList.add('faded');
+  toggleFaded();
 }

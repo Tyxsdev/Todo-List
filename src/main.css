@@ -108,19 +108,49 @@ main {
     width: 600px;
     background-color: var(--color-four);
     padding: 1rem;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    gap: 1rem;
     border-radius: 10px;
     border: 2px solid var(--color-three);
     display: none;
 }
 
+.edit-project {
+    width: 30rem;
+    height: 10rem;
+    position: absolute;
+    background-color: var(--color-four);
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    border-radius: 10px;
+    border: 2px solid var(--color-three);
+}
+
 .test-project h2 {
+    display: inline;
+}
+
+.edit-project h2 {
+    align-self: center;
+    grid-row: 1 / 2;
     margin: 0;
 }
 
-.test-project form {
+
+.close-one {
+    position: absolute;
+    right: 1rem;
+}
+
+.close-two {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.test-project form,
+.edit-project form {
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
     margin-top: 1rem;
     display: grid;
     gap: 1rem;

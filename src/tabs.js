@@ -22,7 +22,6 @@ function displayLastTab() {
 }
 
 function setEvent(links) {
-  console.log(links);
   for (let i = 0; i < links.length; i += 1) {
     links[i].addEventListener('click', selectListToDisplay);
   }
