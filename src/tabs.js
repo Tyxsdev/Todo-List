@@ -7,7 +7,7 @@ export function generateNewTab(links) {
     if (links[i] && links.length === i + 1) {
       const div = CreateDom.makeDiv();
       div.classList.add('list-container');
-      div.textContent = `${i}`;
+      div.textContent = `${i + 1}`;
       domElements.mainContainer.appendChild(div);
     }
   }
@@ -22,9 +22,7 @@ function displayLastTab() {
 }
 
 function setEvent(links) {
-  for (let i = 0; i < links.length; i += 1) {
-    links[i].addEventListener('click', selectListToDisplay);
-  }
+  links.forEach((link) => link.addEventListener('click', selectListToDisplay));
 }
 
 function selectListToDisplay(e) {
