@@ -13,8 +13,4 @@ function toggleFaded() {
   domElements.mainContainer.classList.toggle('faded');
 }
 
-function preventDefault(e) {
-  e.preventDefault();
-}
-
-export { toggleFaded, addCloseEvent, close, preventDefault };
+export { toggleFaded, addCloseEvent, close };

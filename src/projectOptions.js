@@ -1,5 +1,5 @@
 import { CreateDom, domElements } from './domCache';
-import { addCloseEvent, toggleFaded, preventDefault } from './generalEvents';
+import { addCloseEvent, toggleFaded } from './generalEvents';
 import { projectArray } from './popoutProject';
 
 export function displayOptions(e) {
@@ -40,20 +40,24 @@ function changeOptions(node, event, target, index, container) {
   changeButton.originalIndex = index;
   changeButton.newColor = newColor;
   changeButton.newName = newName;
-  changeButton.addEventListener('click', preventDefault);
   changeButton.addEventListener('click', updateValues);
 }
 
 function updateValues(e) {
+  e.preventDefault();
   const newValues = {
     name: e.target.newName.value,
     color: e.target.newColor.value,
   };
   const a = e.target.originalDiv.querySelector('a');
-  a.textContent = newValues.name;
-  a.style.color = newValues.color;
+  updateDiv(a, newValues);
   e.target.popoutDiv.style.display = 'none';
-  toggleFaded();
   projectArray[e.target.originalIndex].name = newValues.name;
   projectArray[e.target.originalIndex].color = newValues.color;
+}
+
+function updateDiv(elem, obj) {
+  if (obj.name !== '') elem.textContent = obj.name;
+  elem.style.color = obj.color;
+  toggleFaded();
 }

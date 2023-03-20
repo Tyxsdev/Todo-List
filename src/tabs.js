@@ -7,7 +7,7 @@ export function generateNewTab(links) {
     if (links[i] && links.length === i + 1) {
       const div = CreateDom.makeDiv();
       div.classList.add('list-container');
-      div.textContent = `${i + 1}`;
+      div.textContent = `${i}`;
       domElements.mainContainer.appendChild(div);
     }
   }

@@ -1,10 +1,11 @@
 import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
-import { addCloseEvent, toggleFaded, preventDefault } from './generalEvents.js';
+import { addCloseEvent, toggleFaded } from './generalEvents.js';
 import { displayOptions } from './projectOptions';
 
 const links = [];
 links.push(domElements.general);
+let count = 0;
 
 const projectArray = [];
 
@@ -15,10 +16,8 @@ class CreateProjectObject {
   }
 
   setIndex() {
-    const newProjectIndex = projectArray.findIndex(
-      (elem) => elem.name === this.name
-    );
-    this.indexSet = newProjectIndex;
+    this.indexSet = count;
+    count += 1;
   }
 }
 
@@ -34,7 +33,7 @@ function handdleLinks(div) {
 }
 
 function getValues(e) {
-  preventDefault();
+  e.preventDefault();
   const projectCreated = handdleNewProject();
   addProject(projectCreated);
   domElements.name.value = '';
@@ -59,6 +58,7 @@ function addProject(projectCreated) {
   const div = CreateDom.makeDiv();
   const a = CreateDom.makeA();
   const svg = CreateDom.makeOptionsSVG();
+  svg.addEventListener('click', displayOptions);
   a.textContent = projectCreated.name;
   a.style.color = projectCreated.color;
   a.classList.add('title');
