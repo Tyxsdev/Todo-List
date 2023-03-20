@@ -92,14 +92,22 @@ const CreateDom = {
     colorLabel.textContent = 'Change color';
     done.setAttribute('type', 'submit');
     done.textContent = 'Done';
+    done.classList.add('done');
     firstDiv.appendChild(nameLabel);
     firstDiv.appendChild(nameInput);
     secondDiv.appendChild(colorLabel);
     secondDiv.appendChild(colorInput);
+    firstDiv.classList.add('form-first');
+    secondDiv.classList.add('form-second');
     form.appendChild(firstDiv);
     form.appendChild(secondDiv);
     form.appendChild(done);
     return form;
+  },
+  makeDelete() {
+    const button = document.createElement('button');
+    button.textContent = 'delete';
+    return button;
   },
 };
 

@@ -1,6 +1,7 @@
 import { CreateDom, domElements } from './domCache';
 import { addCloseEvent, toggleFaded } from './generalEvents';
 import { projectArray } from './popoutProject';
+import { allTabs, displayNextTab } from './tabs';
 
 export function displayOptions(e) {
   toggleFaded();
@@ -9,12 +10,16 @@ export function displayOptions(e) {
   const div = CreateDom.makeDiv();
   const closeSVG = CreateDom.makeCloseSVG();
   const newForm = editDiv(div, closeSVG, projectTarget);
+  setDelete(newForm, e, div);
   changeOptions(newForm, e, projectTarget, index, div);
   domElements.hiddenContainer.appendChild(div);
 }
 
 function findTargetProject(index) {
-  const target = projectArray.filter((project) => project.indexSet == index);
+  const target = projectArray.filter(
+    (project) => Number(project.indexSet) === Number(index)
+  );
+
   return target;
 }
 
@@ -23,7 +28,10 @@ function editDiv(div, closeSVG, project) {
   const h2 = CreateDom.makeH2();
   h2.textContent = project[0].name;
   const newForm = CreateDom.makeForm();
+  const deleteButton = CreateDom.makeDelete();
+  deleteButton.classList.add('delete');
   div.classList.add('edit-project');
+  newForm.appendChild(deleteButton);
   div.appendChild(h2);
   div.appendChild(closeSVG);
   div.appendChild(newForm);
@@ -50,14 +58,40 @@ function updateValues(e) {
     color: e.target.newColor.value,
   };
   const a = e.target.originalDiv.querySelector('a');
-  updateDiv(a, newValues);
+  const { originalIndex } = e.target;
+  updateDiv(a, newValues, originalIndex);
   e.target.popoutDiv.style.display = 'none';
-  projectArray[e.target.originalIndex].name = newValues.name;
-  projectArray[e.target.originalIndex].color = newValues.color;
 }
 
-function updateDiv(elem, obj) {
-  if (obj.name !== '') elem.textContent = obj.name;
+function updateDiv(elem, obj, i) {
+  if (obj.name !== '') {
+    elem.textContent = obj.name;
+    projectArray[i].name = obj.name;
+  }
   elem.style.color = obj.color;
+  projectArray[i].color = obj.color;
+  toggleFaded();
+}
+
+function setDelete(node, event, container) {
+  const deleteButton = node.querySelector('.delete');
+  deleteButton.originalDiv = event.currentTarget.parentElement;
+  deleteButton.popoutDiv = container;
+  deleteButton.addEventListener('click', deleteProject);
+}
+
+function deleteProject(e) {
+  e.preventDefault();
+  const projectIndex = e.target.originalDiv.dataset.index;
+  e.target.originalDiv.remove();
+  e.target.popoutDiv.style.display = 'none';
+  allTabs.forEach((tab) => {
+    if (tab.dataset.index === projectIndex) {
+      const tabSelected = tab.dataset.index;
+      tab.remove();
+      displayNextTab(tabSelected);
+    }
+  });
+
   toggleFaded();
 }

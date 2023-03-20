@@ -1,13 +1,15 @@
 import { CreateDom, domElements } from './domCache';
 
 let allTabs;
+refreshTabs();
 
-export function generateNewTab(links) {
+function generateNewTab(links) {
   for (let i = 0; i < links.length; i += 1) {
     if (links[i] && links.length === i + 1) {
       const div = CreateDom.makeDiv();
       div.classList.add('list-container');
       div.textContent = `${i}`;
+      div.dataset.index = i;
       domElements.mainContainer.appendChild(div);
     }
   }
@@ -29,7 +31,10 @@ function selectListToDisplay(e) {
   const targetIndex = e.currentTarget.dataset.index;
   refreshTabs();
   hideAllTabs();
-  allTabs[targetIndex].classList.remove('hidden-tab');
+  const selectedTab = allTabs.filter(
+    (tab) => tab.dataset.index === targetIndex
+  );
+  selectedTab[0].classList.remove('hidden-tab');
 }
 
 function refreshTabs() {
@@ -39,3 +44,17 @@ function refreshTabs() {
 function hideAllTabs() {
   allTabs.forEach((tab) => tab.classList.add('hidden-tab'));
 }
+
+function displayNextTab(deleted) {
+  const indexDeleted = allTabs.findIndex(
+    (tab) => Number(tab.dataset.index) === Number(deleted)
+  );
+  allTabs.forEach((tab) => {
+    if (Number(tab.dataset.index) === Number(deleted) + 1) {
+      tab.classList.remove('hidden-tab');
+    }
+  });
+  const removed = allTabs.splice(indexDeleted, 1);
+}
+
+export { generateNewTab, allTabs, displayNextTab };
