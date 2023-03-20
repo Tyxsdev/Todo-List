@@ -1,6 +1,6 @@
 import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
-import { addCloseEvent, toggleFaded } from './generalEvents.js';
+import { addCloseEvent, toggleFaded, preventDefault } from './generalEvents.js';
 import { displayOptions } from './projectOptions';
 
 const links = [];
@@ -34,7 +34,7 @@ function handdleLinks(div) {
 }
 
 function getValues(e) {
-  e.preventDefault();
+  preventDefault();
   const projectCreated = handdleNewProject();
   addProject(projectCreated);
   domElements.name.value = '';

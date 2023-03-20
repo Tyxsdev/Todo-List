@@ -1,6 +1,6 @@
 import { CreateDom, domElements } from './domCache';
-import { addCloseEvent, toggleFaded } from './generalEvents';
-import { links, projectArray } from './popoutProject';
+import { addCloseEvent, toggleFaded, preventDefault } from './generalEvents';
+import { projectArray } from './popoutProject';
 
 export function displayOptions(e) {
   toggleFaded();
@@ -8,7 +8,8 @@ export function displayOptions(e) {
   const projectTarget = findTargetProject(index);
   const div = CreateDom.makeDiv();
   const closeSVG = CreateDom.makeCloseSVG();
-  editDiv(div, closeSVG, projectTarget);
+  const newForm = editDiv(div, closeSVG, projectTarget);
+  changeOptions(newForm, e, projectTarget, index, div);
   domElements.hiddenContainer.appendChild(div);
 }
 
@@ -26,4 +27,33 @@ function editDiv(div, closeSVG, project) {
   div.appendChild(h2);
   div.appendChild(closeSVG);
   div.appendChild(newForm);
+  return newForm;
+}
+
+function changeOptions(node, event, target, index, container) {
+  const newName = node.querySelector('#name');
+  const newColor = node.querySelector('#color');
+  const changeButton = node.querySelector('button');
+  changeButton.originalDiv = event.currentTarget.parentElement;
+  changeButton.popoutDiv = container;
+  changeButton.originalProject = target;
+  changeButton.originalIndex = index;
+  changeButton.newColor = newColor;
+  changeButton.newName = newName;
+  changeButton.addEventListener('click', preventDefault);
+  changeButton.addEventListener('click', updateValues);
+}
+
+function updateValues(e) {
+  const newValues = {
+    name: e.target.newName.value,
+    color: e.target.newColor.value,
+  };
+  const a = e.target.originalDiv.querySelector('a');
+  a.textContent = newValues.name;
+  a.style.color = newValues.color;
+  e.target.popoutDiv.style.display = 'none';
+  toggleFaded();
+  projectArray[e.target.originalIndex].name = newValues.name;
+  projectArray[e.target.originalIndex].color = newValues.color;
 }
