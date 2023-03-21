@@ -42,7 +42,8 @@
                     <h2>General</h2>
                     <button class="task">New Task</button>
                 </div>
-                <p>Welcome. If this is your first time here consider open the task below by clicking in it's name to see
+                <p class="welcome">Welcome. If this is your first time here consider open the task below by clicking in
+                    it's name to see
                     a little tutorial for this page</p>
                 <div class="todo">
                     <input type="checkbox" id="open" name="open">
@@ -63,7 +64,31 @@
                         <p>You can change of tab by clicking in the project name</p>
                     </div>
                 </div>
+                <div class="new-task-panel hidden">
+                    <form action="#" method="post">
+                        <div class="name-cont">
+                            <label for="task-name">* Name</label>
+                            <input type="text" name="task-name" id="task-name">
+                        </div>
+                        <div class="color-cont">
+                            <label for="task-color">Color</label>
+                            <input type="color" name="task-color" id="task-color">
+                        </div>
+                        <div class="date-cont">
+                            <label for="end">Date to complete:</label>
+                            <input type="date" id="end" name="end" value="2023-03-21" min="2023-03-21">
+                        </div>
+                        <div class="comment-cont">
+                            <label for="comment" class="here">Add a comment:</label>
+                            <textarea id="comment" name="comment" rows="5" cols="33"></textarea>
+                        </div>
 
+                        <button type="submit" id="create-task">Create Task</button>
+
+                        <p class="error task-para">Enter a name before adding a new task</p>
+                    </form>
+
+                </div>
             </div>
         </section>
     </main>

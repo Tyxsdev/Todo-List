@@ -224,7 +224,7 @@ button:hover {
 .error {
     display: none;
     margin-top: 0;
-    color: var(--color-five);
+    color: var(--color-four);
 }
 
 .hidden-tab {
@@ -250,6 +250,7 @@ button:hover {
     padding: 2rem;
     border-radius: 1rem;
     border-left: 1px solid black;
+    position: relative;
 }
 
 .list-header {
@@ -262,7 +263,7 @@ button:hover {
     font-family: 'Tilt Neon', cursive;
 }
 
-.list-container p {
+.welcome {
     font-size: 1.5rem;
     font-weight: 600;
     font-family: 'Tilt Neon', cursive;
@@ -337,4 +338,65 @@ button:hover {
 
 .hidden {
     display: none;
+}
+
+.new-task-panel {
+    background-color: #ffffff;
+    width: 80%;
+    height: 18rem;
+    position: absolute;
+    top: 20%;
+    left: 12%;
+    border-radius: 1rem;
+    border: 5px solid var(--color-three);
+}
+
+.new-task-panel form {
+    height: 80%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 1rem;
+}
+
+.new-task-panel form label {
+    text-decoration: underline;
+}
+
+.name-cont {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.color-cont {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.date-cont {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.comment-cont {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+#create-task {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    margin-top: 1rem;
+    justify-self: center;
+    align-self: end;
+}
+
+.task-para {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+    font-size: 1rem;
 }

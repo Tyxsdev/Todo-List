@@ -9,7 +9,7 @@ function close(e) {
   e.currentTarget.parentNode.style.display = 'none';
 }
 
-function toggleFaded() {
+function toggleFaded(e) {
   domElements.mainContainer.classList.toggle('faded');
 }
 

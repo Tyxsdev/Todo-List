@@ -18,6 +18,7 @@ function domCache() {
   const name = document.querySelector('#name');
   const color = document.querySelector('#color');
   const addTask = document.querySelector('.task');
+  const taskPanel = document.querySelector('.new-task-panel');
   return {
     hiddenProject,
     hiddenContainer,
@@ -34,6 +35,7 @@ function domCache() {
     color,
     proOptions,
     addTask,
+    taskPanel,
   };
 }
 
