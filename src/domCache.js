@@ -17,6 +17,7 @@ function domCache() {
   }
   const name = document.querySelector('#name');
   const color = document.querySelector('#color');
+  const addTask = document.querySelector('.task');
   return {
     hiddenProject,
     hiddenContainer,
@@ -32,6 +33,7 @@ function domCache() {
     name,
     color,
     proOptions,
+    addTask,
   };
 }
 
@@ -106,7 +108,13 @@ const CreateDom = {
   },
   makeDelete() {
     const button = document.createElement('button');
-    button.textContent = 'delete';
+    button.textContent = 'Delete';
+    return button;
+  },
+  makeNewTaskButton() {
+    const button = document.createElement('button');
+    button.textContent = 'New Task';
+    button.classList.add('task');
     return button;
   },
 };

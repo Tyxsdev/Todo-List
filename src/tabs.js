@@ -1,15 +1,24 @@
 import { CreateDom, domElements } from './domCache';
+import { work } from './addTask';
 
 let allTabs;
 refreshTabs();
 
-function generateNewTab(links) {
+function generateNewTab(links, project) {
   for (let i = 0; i < links.length; i += 1) {
     if (links[i] && links.length === i + 1) {
       const div = CreateDom.makeDiv();
+      const header = CreateDom.makeDiv();
+      const h2 = CreateDom.makeH2();
+      const addTask = CreateDom.makeNewTaskButton();
       div.classList.add('list-container');
-      div.textContent = `${i}`;
       div.dataset.index = i;
+      header.classList.add('list-header');
+      h2.textContent = project.name;
+      addTask.addEventListener('click', work);
+      header.appendChild(h2);
+      header.appendChild(addTask);
+      div.appendChild(header);
       domElements.mainContainer.appendChild(div);
     }
   }

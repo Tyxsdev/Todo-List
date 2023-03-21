@@ -68,7 +68,7 @@ function addProject(projectCreated) {
   div.appendChild(svg);
   domElements.newProjectContainer.appendChild(div);
   handdleLinks(div);
-  generateNewTab(links);
+  generateNewTab(links, projectCreated);
   defaultDisplay();
 }
 
