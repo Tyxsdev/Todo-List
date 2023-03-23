@@ -47,8 +47,7 @@
                     a little tutorial for this page</p>
                 <div class="todo">
                     <input type="checkbox" id="open" name="open">
-                    <div class="checkbox-box"></div>
-                    <label for="open" class="open">Open Me!</label>
+                    <a href="#">Open Me!</a>
                     <span class="material-symbols-outlined options todo-options">
                         more_vert
                     </span>
@@ -76,19 +75,18 @@
                             <input type="color" name="task-color" id="task-color">
                         </div>
                         <div class="date-cont">
-                            <label for="end">Date to complete:</label>
-                            <input type="date" id="end" name="end" value="2023-03-21" min="2023-03-21">
+                            <label for="task-end">Date to complete:</label>
+                            <input type="date" id="task-end" name="task-end">
                         </div>
                         <div class="comment-cont">
-                            <label for="comment" class="here">Add a comment:</label>
-                            <textarea id="comment" name="comment" rows="5" cols="33"></textarea>
+                            <label for="task-comment" class="here">Add a comment:</label>
+                            <textarea id="task-comment" name="task-comment" rows="5" cols="33"></textarea>
                         </div>
 
                         <button type="submit" id="create-task">Create Task</button>
 
-                        <p class="error task-para">Enter a name before adding a new task</p>
+                        <p class="error task-error">Enter a name before adding a new task</p>
                     </form>
-
                 </div>
             </div>
         </section>

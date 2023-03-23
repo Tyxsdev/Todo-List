@@ -20,6 +20,12 @@ function domCache() {
   const addTask = document.querySelector('.task');
   const taskPanel = document.querySelector('.new-task-panel');
   const closeTaskPanel = document.querySelector('.close-three');
+  const createTaskButton = document.querySelector('#create-task');
+  const taskName = document.querySelector('#task-name');
+  const taskColor = document.querySelector('#task-color');
+  const taskEnd = document.querySelector('#task-end');
+  const taskComment = document.querySelector('#task-comment');
+  const taskError = document.querySelector('.task-error');
   return {
     hiddenProject,
     hiddenContainer,
@@ -38,6 +44,12 @@ function domCache() {
     addTask,
     taskPanel,
     closeTaskPanel,
+    createTaskButton,
+    taskColor,
+    taskComment,
+    taskEnd,
+    taskName,
+    taskError,
   };
 }
 
@@ -120,6 +132,15 @@ const CreateDom = {
     button.textContent = 'New Task';
     button.classList.add('task');
     return button;
+  },
+  makeCheckbox() {
+    const input = document.createElement('input');
+    input.setAttribute('type', 'checkbox');
+    return input;
+  },
+  makeSpan() {
+    const span = document.createElement('span');
+    return span;
   },
 };
 

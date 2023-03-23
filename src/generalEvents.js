@@ -19,9 +19,19 @@ function closeNewTaskPanel(e) {
   domElements.addTask.style.pointerEvents = '';
 }
 
+function getTodayDate() {
+  const now = new Date();
+  const day = `0${now.getDate()}`.slice(-2);
+  const month = `0${now.getMonth() + 1}`.slice(-2);
+
+  const today = `${now.getFullYear()}-${month}-${day}`;
+  return today;
+}
+
 export {
   toggleFadedForProject,
   addCloseEventForProject,
   closeProjectsPopouts,
   closeNewTaskPanel,
+  getTodayDate,
 };
