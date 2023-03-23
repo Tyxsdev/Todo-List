@@ -19,6 +19,7 @@ function domCache() {
   const color = document.querySelector('#color');
   const addTask = document.querySelector('.task');
   const taskPanel = document.querySelector('.new-task-panel');
+  const closeTaskPanel = document.querySelector('.close-three');
   return {
     hiddenProject,
     hiddenContainer,
@@ -36,6 +37,7 @@ function domCache() {
     proOptions,
     addTask,
     taskPanel,
+    closeTaskPanel,
   };
 }
 

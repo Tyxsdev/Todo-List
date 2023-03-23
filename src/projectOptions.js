@@ -1,10 +1,13 @@
 import { CreateDom, domElements } from './domCache';
-import { addCloseEvent, toggleFaded } from './generalEvents';
+import {
+  addCloseEventForProject,
+  toggleFadedForProject,
+} from './generalEvents';
 import { projectArray } from './popoutProject';
 import { allTabs, displayNextTab } from './tabs';
 
 export function displayOptions(e) {
-  toggleFaded();
+  toggleFadedForProject();
   const { index } = e.currentTarget.parentElement.dataset;
   const projectTarget = findTargetProject(index);
   const div = CreateDom.makeDiv();
@@ -24,7 +27,7 @@ function findTargetProject(index) {
 }
 
 function editDiv(div, closeSVG, project) {
-  addCloseEvent(closeSVG);
+  addCloseEventForProject(closeSVG);
   const h2 = CreateDom.makeH2();
   h2.textContent = project[0].name;
   const newForm = CreateDom.makeForm();
@@ -70,7 +73,7 @@ function updateDiv(elem, obj, i) {
   }
   elem.style.color = obj.color;
   projectArray[i].color = obj.color;
-  toggleFaded();
+  toggleFadedForProject();
 }
 
 function setDelete(node, event, container) {
@@ -93,5 +96,5 @@ function deleteProject(e) {
     }
   });
 
-  toggleFaded();
+  toggleFadedForProject();
 }

@@ -1,16 +1,27 @@
 import { domElements } from './domCache';
 
-function addCloseEvent(elem) {
-  elem.addEventListener('click', close);
+function addCloseEventForProject(elem) {
+  elem.addEventListener('click', closeProjectsPopouts);
 }
 
-function close(e) {
-  toggleFaded();
+function closeProjectsPopouts(e) {
+  toggleFadedForProject();
   e.currentTarget.parentNode.style.display = 'none';
 }
 
-function toggleFaded(e) {
+function toggleFadedForProject(e) {
   domElements.mainContainer.classList.toggle('faded');
 }
 
-export { toggleFaded, addCloseEvent, close };
+function closeNewTaskPanel(e) {
+  domElements.projectsContainer.classList.remove('faded');
+  domElements.taskPanel.classList.add('hidden');
+  domElements.addTask.style.pointerEvents = '';
+}
+
+export {
+  toggleFadedForProject,
+  addCloseEventForProject,
+  closeProjectsPopouts,
+  closeNewTaskPanel,
+};

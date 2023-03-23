@@ -1,6 +1,9 @@
 import { domElements, CreateDom } from './domCache.js';
 import { generateNewTab } from './tabs.js';
-import { addCloseEvent, toggleFaded } from './generalEvents.js';
+import {
+  addCloseEventForProject,
+  toggleFadedForProject,
+} from './generalEvents.js';
 import { displayOptions } from './projectOptions';
 
 const links = [];
@@ -25,7 +28,7 @@ const defaultProject = new CreateProjectObject('General', 'black');
 projectArray.push(defaultProject);
 defaultProject.setIndex();
 domElements.createProject.addEventListener('click', getValues);
-addCloseEvent(domElements.closeNewProject);
+addCloseEventForProject(domElements.closeNewProject);
 domElements.proOptions.addEventListener('click', displayOptions);
 
 function handdleLinks(div) {
@@ -75,12 +78,12 @@ function addProject(projectCreated) {
 function defaultDisplay() {
   domElements.errorMessage.style.display = 'none';
   domElements.hiddenProject.style.display = 'none';
-  toggleFaded();
+  toggleFadedForProject();
 }
 
 function displayProjectPanel() {
   domElements.hiddenProject.style.display = 'block';
-  toggleFaded();
+  toggleFadedForProject();
 }
 
 export { displayProjectPanel, links, projectArray };

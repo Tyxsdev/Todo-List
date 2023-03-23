@@ -1,8 +1,9 @@
 import { CreateDom, domElements } from './domCache';
-import { toggleFaded } from './generalEvents';
 
-function work(e) {
+function displayNewTaskPanel(e) {
+  domElements.projectsContainer.classList.add('faded');
   domElements.taskPanel.classList.remove('hidden');
+  e.currentTarget.style.pointerEvents = 'none';
 }
 
-export { work };
+export { displayNewTaskPanel };
