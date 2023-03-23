@@ -1,5 +1,6 @@
 import { CreateDom, domElements } from './domCache';
 import { closeNewTaskPanel, getTodayDate } from './generalEvents';
+import { showNewTask } from './showTaskDescription';
 
 const arrayOfTask = [];
 let count = 0;
@@ -51,6 +52,7 @@ function displayTask(task, tab) {
   const name = CreateDom.makeA();
   const time = CreateDom.makeSpan();
   const options = CreateDom.makeOptionsSVG();
+  const description = CreateDom.makeDiv();
 
   container.classList.add('todo');
   name.textContent = task.name;
@@ -60,11 +62,16 @@ function displayTask(task, tab) {
   time.textContent = `Complete before "${task.date}"`;
   time.classList.add('time');
   options.classList.add('todo-options');
+  description.classList.add('todo-description');
+  description.classList.add('hidden');
+
+  name.addEventListener('click', showNewTask);
 
   container.appendChild(checkbox);
   container.appendChild(name);
   container.appendChild(time);
   container.appendChild(options);
+  container.appendChild(description);
   tab.appendChild(container);
 
   closeNewTaskPanel();

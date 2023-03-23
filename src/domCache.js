@@ -26,6 +26,7 @@ function domCache() {
   const taskEnd = document.querySelector('#task-end');
   const taskComment = document.querySelector('#task-comment');
   const taskError = document.querySelector('.task-error');
+  const firstTask = document.querySelector('.first-task');
   return {
     hiddenProject,
     hiddenContainer,
@@ -50,6 +51,7 @@ function domCache() {
     taskEnd,
     taskName,
     taskError,
+    firstTask,
   };
 }
 
